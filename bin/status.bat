@@ -1,0 +1,3 @@
+﻿REM
+cd ..
+git status
