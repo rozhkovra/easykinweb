@@ -20,4 +20,16 @@
 		<nature>org.eclipse.jdt.core.javanature</nature>
 		<nature>org.eclipse.m2e.core.maven2Nature</nature>
 	</natures>
+	<linkedResources>
+		<link>
+			<name>EasyKinJava</name>
+			<type>2</type>
+			<location>F:/projects/workspace_rrozhkov/EasyKin/src/main/java</location>
+		</link>
+		<link>
+			<name>EasyKinLib</name>
+			<type>2</type>
+			<location>F:/projects/workspace_rrozhkov/EasyKin/lib</location>
+		</link>
+	</linkedResources>
 </projectDescription>
