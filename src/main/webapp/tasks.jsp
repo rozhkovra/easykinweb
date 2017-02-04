@@ -6,6 +6,7 @@
 <%@ page import="java.util.*"%>
 <%@ page import="org.hsqldb.jdbc.*"%>
 <%@ page pageEncoding="utf-8" %>
+<h2>Задачи</h2>
 <table border="1">
 <tr>
 <th>№</th>

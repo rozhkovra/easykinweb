@@ -11,7 +11,7 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
-<h2>EasyKinWeb - семейный помошник (web-версия )</h2>
+<h1>EasyKinWeb - семейный помошник (web-версия )</h1>
 <jsp:include page="tasks.jsp"/>
 </body>
 </html>
