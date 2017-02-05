@@ -73,6 +73,10 @@
 <td style="<%=tdStyle%>"><%=DateUtil.format(task.getPlanDate())%></td>
 <td style="<%=tdStyle%>"><%=task.getPriority()%></td>
 <td style="<%=tdStyle%>"><%=task.getCategory().getName()%></td>
+<%
+	if(new java.util.Date().getTime()>task.getPlanDate().getTime())
+		tdStyle+="background-color:#7e7e7e;";
+%>
 <td style="<%=tdStyle%>"><%=DateUtil.format(task.getCreateDate())%></td>
 </tr>
 <%			
