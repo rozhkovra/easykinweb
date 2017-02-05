@@ -1,8 +1,10 @@
-<%@ page import="ru.rrozhkov.easykin.db.impl.*"%>
+<%@ page import="ru.rrozhkov.easykin.context.*"%>
 <%@ page import="ru.rrozhkov.easykin.model.task.*"%>
 <%@ page import="ru.rrozhkov.easykin.model.category.*"%>
 <%@ page import="ru.rrozhkov.easykin.util.*"%>
 <%@ page import="ru.rrozhkov.lib.filter.util.*"%>
+<%@ page import="ru.rrozhkov.lib.filter.*"%>
+<%@ page import="ru.rrozhkov.lib.collection.*"%>
 <%@ page import="ru.rrozhkov.easykin.model.task.impl.filter.*"%>
 <%@ page import="java.sql.*"%>
 <%@ page import="java.io.*"%>
@@ -21,45 +23,48 @@
 <th>Дата</th>
 </tr>
 <%
-	TaskHandler taskHandler = new TaskHandler();
-	try{
-		int i = 0;
-		Collection<ITask> tasks = taskHandler.select();
-		int categoryId = request.getParameter("categoryId")!=null?Integer.valueOf(request.getParameter("categoryId")):-1;
-		if(categoryId!=-1 && categoryId!=9){			
-			ICategory category = CategoryFactory.create(categoryId, "");
-			tasks = FilterUtil.filter(tasks, TaskFilterFactory.createCategoryFilter(category));
-		}
-		int statusId = request.getParameter("statusId")!=null?Integer.valueOf(request.getParameter("statusId")):-1;
-		if(statusId!=-1){			
-			Status status = Status.status(statusId);
-			tasks = FilterUtil.filter(tasks, TaskFilterFactory.createStatusFilter(status));
-		}
-		int priorityId = request.getParameter("priorityId")!=null?Integer.valueOf(request.getParameter("priorityId")):-1;
-		if(priorityId!=-1){			
-			Priority priority = Priority.priority(priorityId);
-			tasks = FilterUtil.filter(tasks, TaskFilterFactory.createPriorityFilter(priority));
-		}
-		for(ITask task : tasks){
-			String color = "";
-			String tdStyle = "height:50px;";
-	        if(Status.CLOSE.equals(task.getStatus())){
-	        	if(task.getCloseDate().getTime()>task.getPlanDate().getTime())
-	        		color = "#7e7e7e";
-	        	else
-	        		color = "#44e53f";		        
-	        }else{
-	        	color = "#ffffff";
-	        	if(Priority.IMPOTANT_FAST.equals(task.getPriority())
-	        			|| Priority.IMPOTANT_NOFAST.equals(task.getPriority())){
-	        		color = "#eec95e";
-	        	}
-	        }
-	        if (Priority.IMPOTANT_FAST.equals(task.getPriority())){
-	        	tdStyle+="font-size:20px;font-weight:bold;";
-		    } else {  
-		    	tdStyle+="font-size:15px;font-style:italic;";
-		    }
+	EasyKinContext context = new EasyKinContext();
+	context.init();
+
+	int i = 0;
+	Collection<ITask> tasks = context.tasks();
+	Collection<IFilter> filters = CollectionUtil.<IFilter>create();
+	int categoryId = request.getParameter("categoryId")!=null?Integer.valueOf(request.getParameter("categoryId")):-1;
+	if(categoryId!=-1 && categoryId!=9){			
+		ICategory category = CategoryFactory.create(categoryId, "");
+		filters.add(TaskFilterFactory.createCategoryFilter(category));
+	}
+	int statusId = request.getParameter("statusId")!=null?Integer.valueOf(request.getParameter("statusId")):-1;
+	if(statusId!=-1){			
+		Status status = Status.status(statusId);
+		filters.add(TaskFilterFactory.createStatusFilter(status));
+	}
+	int priorityId = request.getParameter("priorityId")!=null?Integer.valueOf(request.getParameter("priorityId")):-1;
+	if(priorityId!=-1){			
+		Priority priority = Priority.priority(priorityId);
+		filters.add(TaskFilterFactory.createPriorityFilter(priority));
+	}
+	tasks = FilterUtil.filter(tasks, filters);
+	for(ITask task : tasks){
+		String color = "";
+		String tdStyle = "height:50px;";
+        if(Status.CLOSE.equals(task.getStatus())){
+        	if(task.getCloseDate().getTime()>task.getPlanDate().getTime())
+        		color = "#7e7e7e";
+        	else
+        		color = "#44e53f";		        
+        }else{
+        	color = "#ffffff";
+        	if(Priority.IMPOTANT_FAST.equals(task.getPriority())
+        			|| Priority.IMPOTANT_NOFAST.equals(task.getPriority())){
+        		color = "#eec95e";
+        	}
+        }
+        if (Priority.IMPOTANT_FAST.equals(task.getPriority())){
+        	tdStyle+="font-size:20px;font-weight:bold;";
+	    } else {  
+	    	tdStyle+="font-size:15px;font-style:italic;";
+	    }
 
 %>
 <tr bgcolor="<%=color%>">
@@ -71,9 +76,6 @@
 <td style="<%=tdStyle%>"><%=DateUtil.format(task.getCreateDate())%></td>
 </tr>
 <%			
-		}
-	}catch(SQLException e){
-		e.printStackTrace(new java.io.PrintWriter(out));
 	}
 %>
 </table>
