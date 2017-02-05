@@ -1,4 +1,4 @@
-<%@ page import="ru.rrozhkov.easykin.db.*"%>
+<%@ page import="ru.rrozhkov.easykin.db.impl.*"%>
 <%@ page import="ru.rrozhkov.easykin.model.task.*"%>
 <%@ page import="ru.rrozhkov.easykin.util.*"%>
 <%@ page import="java.sql.*"%>
