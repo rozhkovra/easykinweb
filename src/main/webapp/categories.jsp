@@ -1,12 +1,9 @@
 <%@ page import="ru.rrozhkov.easykin.context.*"%>
 <%@ page import="ru.rrozhkov.easykin.model.category.*"%>
 <%@ page import="ru.rrozhkov.easykin.util.*"%>
-<%@ page import="java.sql.*"%>
-<%@ page import="java.io.*"%>
 <%@ page import="java.util.*"%>
 <%@ page import="org.hsqldb.jdbc.*"%>
-<%@ page pageEncoding="utf-8" %>
-<% request.setCharacterEncoding("utf-8");%>
+<%@ page pageEncoding="UTF-8" contentType="text/html;charset=UTF-8"%>
 <table border="0">
 <tr>
 <%
@@ -38,6 +35,5 @@
 		</td><%
 	}
 %>
-
 </tr>
 </table>

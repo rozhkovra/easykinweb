@@ -6,14 +6,11 @@
 <%@ page import="ru.rrozhkov.lib.filter.*"%>
 <%@ page import="ru.rrozhkov.lib.collection.*"%>
 <%@ page import="ru.rrozhkov.easykin.model.task.impl.filter.*"%>
-<%@ page import="java.sql.*"%>
-<%@ page import="java.io.*"%>
 <%@ page import="java.util.*"%>
 <%@ page import="org.hsqldb.jdbc.*"%>
-<%@ page pageEncoding="utf-8" %>
-<% request.setCharacterEncoding("utf-8");%>
+<%@ page pageEncoding="UTF-8" contentType="text/html;charset=UTF-8"%>
 <h2>Задачи </h2>
-<table border="1">
+<table border="1" width="100%">
 <tr>
 <th>№</th>
 <th>Описание</th>
