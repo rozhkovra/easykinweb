@@ -9,7 +9,13 @@
 <%@ page import="java.util.*"%>
 <%@ page import="org.hsqldb.jdbc.*"%>
 <%@ page pageEncoding="UTF-8" contentType="text/html;charset=UTF-8"%>
-<h2>Задачи </h2>
+</br>
+<table border="0" width="100%">
+<tr>
+<td style="font-size:30px;font-weight:bold;text-align:left;">Задачи</td>
+<td style="font-size:30px;font-weight:bold;text-align:right;"><%=DateUtil.formatWeek(new Date())%></td>
+</tr>
+</table>
 <table border="1" width="100%">
 <tr>
 <th>№</th>
@@ -71,7 +77,7 @@
 <td style="<%=tdStyle%>"><%=task.getPriority()%></td>
 <td style="<%=tdStyle%>"><%=task.getCategory().getName()%></td>
 <%
-	if(new java.util.Date().getTime()>task.getPlanDate().getTime())
+	if(new Date().getTime()>task.getPlanDate().getTime())
 		tdStyle+="background-color:#7e7e7e;";
 %>
 <td style="<%=tdStyle%>"><%=DateUtil.format(task.getCreateDate())%></td>
