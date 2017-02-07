@@ -68,11 +68,14 @@
 	    } else {  
 	    	tdStyle+="font-size:15px;font-style:italic;";
 	    }
-
+        String comments = "";
+        for(IComment comment : task.comments()){
+        	comments += comment.getText()+"|";
+        }
 %>
 <tr bgcolor="<%=color%>">
 <td style="<%=tdStyle%>"><%=++i%></td>
-<td style="<%=tdStyle%>"><%=task.getName()%></td>
+<td style="<%=tdStyle%>"><%=task.getName()%>(<%=task.getId()%>)<br/><span style="font-size:12px;"><%=comments%></span></td>
 <td style="<%=tdStyle%>"><%=DateUtil.format(task.getPlanDate())%></td>
 <td style="<%=tdStyle%>"><%=task.getPriority()%></td>
 <td style="<%=tdStyle%>"><%=task.getCategory().getName()%></td>
