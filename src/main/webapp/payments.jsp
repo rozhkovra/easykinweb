@@ -1,12 +1,8 @@
 <%@ page import="ru.rrozhkov.easykin.context.*"%>
 <%@ page import="ru.rrozhkov.easykin.util.*"%>
-<%@ page import="ru.rrozhkov.lib.filter.util.*"%>
-<%@ page import="ru.rrozhkov.lib.filter.*"%>
-<%@ page import="ru.rrozhkov.lib.collection.*"%>
-<%@ page import="ru.rrozhkov.easykin.model.task.impl.filter.*"%>
 <%@ page import="ru.rrozhkov.easykin.model.fin.payment.*"%>
 <%@ page import="java.util.*"%>
-<%@ page import="org.hsqldb.jdbc.*"%>
+
 <%@ page pageEncoding="UTF-8" contentType="text/html;charset=UTF-8"%>
 </br>
 <table border="0" width="100%">
@@ -24,8 +20,7 @@
 <th>Дата</th>
 </tr>
 <%
-	EasyKinContext context = new EasyKinContext();
-	context.init();
+	EasyKinContext context = (EasyKinContext)session.getAttribute("easyKinContext");
 	int categoryId = request.getParameter("categoryId")!=null?Integer.valueOf(request.getParameter("categoryId")):-1;
 
 	int i = 0;

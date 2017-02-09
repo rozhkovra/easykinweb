@@ -7,6 +7,7 @@
 <table border="0">
 <tr>
 <%
+	EasyKinContext context = (EasyKinContext)session.getAttribute("easyKinContext");
 
 	int statusId = request.getParameter("statusId")!=null?Integer.valueOf(request.getParameter("statusId")):-1;
 	int priorityId = request.getParameter("priorityId")!=null?Integer.valueOf(request.getParameter("priorityId")):-1;
@@ -20,8 +21,6 @@
 	}
 	%><td style="<%=tdStyle%>"><a href="index.jsp?<%=urlParameters%>">Все</a></td><%
 			
-	EasyKinContext context = new EasyKinContext();
-	context.init();
 
 	for(ICategory category : context.categories()){
         if (category.getId()==categoryId){

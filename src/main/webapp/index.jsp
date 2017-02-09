@@ -1,3 +1,4 @@
+<%@ page import="ru.rrozhkov.easykin.context.*"%>
 <%@ page import="ru.rrozhkov.easykin.util.*"%>
 <%@ page import="ru.rrozhkov.easykin.model.category.*"%>
 <%@ page import="java.util.*"%>
@@ -6,6 +7,13 @@
 <title>EasyKinWeb, <%=DateUtil.formatWeek(new Date())%></title>
 <body>
 <h1>EasyKinWeb - семейный помошник (web-версия )</h1>
+<%
+	if(session.getAttribute("easyKinContext")==null){
+		EasyKinContext context = new EasyKinContext();
+		context.init();
+		session.setAttribute("easyKinContext", context);
+	}
+%>
 <jsp:include page="status.jsp"/>
 <jsp:include page="priorities.jsp"/>
 <jsp:include page="categories.jsp"/>

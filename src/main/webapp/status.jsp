@@ -4,6 +4,7 @@
 <table border="0">
 <tr>
 <%
+	EasyKinContext context = (EasyKinContext)session.getAttribute("easyKinContext");
 	int categoryId = request.getParameter("categoryId")!=null?Integer.valueOf(request.getParameter("categoryId")):-1;
 	int priorityId = request.getParameter("priorityId")!=null?Integer.valueOf(request.getParameter("priorityId")):-1;
 	String urlParameters = "session="+session.getId()+"&categoryId="+categoryId+"&priorityId="+priorityId;
@@ -15,8 +16,6 @@
 		tdStyle = "font-size:25px;font-weight:bold;";
 	}
 %><td style="<%=tdStyle%>"><a href="index.jsp?<%=urlParameters%>">Все</a></td><%	
-
-	EasyKinContext context = new EasyKinContext();
 
 	for(Status status : context.statuses()){
         if (status.equals(Status.status(statusId)) && statusId!=-1){

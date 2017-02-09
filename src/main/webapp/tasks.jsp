@@ -26,8 +26,7 @@
 <th>Дата</th>
 </tr>
 <%
-	EasyKinContext context = new EasyKinContext();
-	context.init();
+	EasyKinContext context = (EasyKinContext)session.getAttribute("easyKinContext");
 
 	int i = 0;
 	Collection<ITask> tasks = context.tasks();
