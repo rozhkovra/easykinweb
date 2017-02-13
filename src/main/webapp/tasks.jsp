@@ -34,17 +34,17 @@
 	int categoryId = request.getParameter("categoryId")!=null?Integer.valueOf(request.getParameter("categoryId")):-1;
 	if(categoryId!=-1 && categoryId!=9){			
 		ICategory category = CategoryFactory.create(categoryId, "");
-		filters.add(TaskFilterFactory.createCategoryFilter(category));
+		filters.add(TaskFilterFactory.category(category));
 	}
 	int statusId = request.getParameter("statusId")!=null?Integer.valueOf(request.getParameter("statusId")):-1;
 	if(statusId!=-1){			
 		Status status = Status.status(statusId);
-		filters.add(TaskFilterFactory.createStatusFilter(status));
+		filters.add(TaskFilterFactory.status(status));
 	}
 	int priorityId = request.getParameter("priorityId")!=null?Integer.valueOf(request.getParameter("priorityId")):-1;
 	if(priorityId!=-1){			
 		Priority priority = Priority.priority(priorityId);
-		filters.add(TaskFilterFactory.createPriorityFilter(priority));
+		filters.add(TaskFilterFactory.priority(priority));
 	}
 	tasks = FilterUtil.filter(tasks, filters);
 	for(ITask task : tasks){
