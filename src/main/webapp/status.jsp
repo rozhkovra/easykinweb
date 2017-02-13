@@ -4,7 +4,7 @@
 <table border="0">
 <tr>
 <%
-	EasyKinContext context = (EasyKinContext)session.getAttribute("easyKinContext");
+	MasterDataContext context = (MasterDataContext)session.getAttribute("masterDataContext");
 	int categoryId = request.getParameter("categoryId")!=null?Integer.valueOf(request.getParameter("categoryId")):-1;
 	int priorityId = request.getParameter("priorityId")!=null?Integer.valueOf(request.getParameter("priorityId")):-1;
 	String urlParameters = "session="+session.getId()+"&categoryId="+categoryId+"&priorityId="+priorityId;

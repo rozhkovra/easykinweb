@@ -7,7 +7,7 @@
 <table border="0">
 <tr>
 <%
-	EasyKinContext context = (EasyKinContext)session.getAttribute("easyKinContext");
+	MasterDataContext context = (MasterDataContext)session.getAttribute("masterDataContext");
 
 	int statusId = request.getParameter("statusId")!=null?Integer.valueOf(request.getParameter("statusId")):-1;
 	int priorityId = request.getParameter("priorityId")!=null?Integer.valueOf(request.getParameter("priorityId")):-1;

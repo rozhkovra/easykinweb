@@ -8,10 +8,10 @@
 <body>
 <h1>EasyKinWeb - семейный помошник (web-версия )</h1>
 <%
-	if(session.getAttribute("easyKinContext")==null){
-		EasyKinContext context = new EasyKinContext();
+	if(session.getAttribute("masterDataContext")==null){
+		MasterDataContext context = new MasterDataContext();
 		context.init();
-		session.setAttribute("easyKinContext", context);
+		session.setAttribute("masterDataContext", context);
 	}
 %>
 <jsp:include page="status.jsp"/>

@@ -19,7 +19,7 @@
 <th>Дата</th>
 </tr>
 <%
-	EasyKinContext context = (EasyKinContext)session.getAttribute("easyKinContext");
+	MasterDataContext context = (MasterDataContext)session.getAttribute("masterDataContext");
 	int categoryId = request.getParameter("categoryId")!=null?Integer.valueOf(request.getParameter("categoryId")):-1;
 
 	int i = 0;
