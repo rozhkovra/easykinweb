@@ -79,7 +79,7 @@
 <td style="<%=tdStyle%>"><%=task.getPriority()%></td>
 <td style="<%=tdStyle%>"><%=task.getCategory().getName()%></td>
 <%
-	if(new Date().getTime()>task.getPlanDate().getTime())
+	if(new Date().getTime()>task.getPlanDate().getTime() && Status.OPEN.equals(task.getStatus()))
 		tdStyle+="background-color:#7e7e7e;";
 %>
 <td style="<%=tdStyle%>"><%=DateUtil.format(task.getCreateDate())%></td>
