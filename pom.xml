@@ -4,7 +4,7 @@
   <groupId>ru.rrozhkov.easykin.web</groupId>
   <artifactId>easykin.web</artifactId>
   <packaging>war</packaging>
-  <version>2.0-SNAPSHOT</version>
+  <version>4.0.0-SNAPSHOT</version>
   <name>EasyKinWeb Maven Webapp</name>
   <url>http://maven.apache.org</url>
   <dependencies>
