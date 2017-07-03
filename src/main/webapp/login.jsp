@@ -7,5 +7,4 @@
 <b>Логин</b> 	<input type="text" name="username" value=""/><br/>
 <b>Пароль</b> 	<input type="password" name="password" value=""/><br/>
 <input type="submit" value="Войти"/>
-<input type="button" value="Закрыть"/>
 </form>

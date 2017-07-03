@@ -5,10 +5,11 @@
 <%@ page pageEncoding="UTF-8" contentType="text/html;charset=UTF-8"%>
 <%
 	if(session.getAttribute("masterDataContext")==null){
-		MasterDataContext context = new MasterDataContext();
-		context.init();
-		session.setAttribute("masterDataContext", context);
+		session.setAttribute("masterDataContext", new MasterDataContext());
 	}
+	MasterDataContext context = (MasterDataContext)session.getAttribute("masterDataContext");
+    context.init();
+
 %>
 <jsp:include page="status.jsp"/>
 <jsp:include page="priorities.jsp"/>
