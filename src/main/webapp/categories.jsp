@@ -4,8 +4,8 @@
 <%@ page import="java.util.*"%>
 <%@ page import="org.hsqldb.jdbc.*"%>
 <%@ page pageEncoding="UTF-8" contentType="text/html;charset=UTF-8"%>
+<div id="category">
 <table border="0">
-<tr>
 <%
 	MasterDataContext context = (MasterDataContext)session.getAttribute("masterDataContext");
 
@@ -19,7 +19,7 @@
 	}else{
 		tdStyle = "font-size:25px;font-weight:bold;";
 	}
-	%><td style="<%=tdStyle%>"><a href="index.jsp?<%=urlParameters%>">Все</a></td><%
+	%><tr><td style="<%=tdStyle%>"><a href="index.jsp?<%=urlParameters%>">Все</a></td></tr><%
 			
 
 	for(ICategory category : context.categories()){
@@ -29,10 +29,10 @@
 	    	tdStyle="font-size:20px;font-style:italic;";
 	    }
         String urlParameters1=urlParameters+"&categoryId="+category.getId();
-		%><td style="<%=tdStyle%>">
+		%><tr><td style="<%=tdStyle%>">
 		<a href="index.jsp?<%=urlParameters1%>"><%=category.getName()%></a>
-		</td><%
+		</td></tr><%
 	}
 %>
-</tr>
 </table>
+</div>

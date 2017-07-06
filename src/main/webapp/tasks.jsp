@@ -9,14 +9,15 @@
 <%@ page import="java.util.*"%>
 <%@ page import="org.hsqldb.jdbc.*"%>
 <%@ page pageEncoding="UTF-8" contentType="text/html;charset=UTF-8"%>
-</br>
+<div id="tasks">
+<div style="overflow-y: scroll;">
 <table border="0" width="100%">
-<tr>
-<td style="font-size:30px;font-weight:bold;text-align:left;">Задачи</td>
-<td style="font-size:30px;font-weight:bold;text-align:right;"><%=DateUtil.formatWeek(new Date())%></td>
-</tr>
-</table>
-<table border="1" width="100%">
+  <col width="30"/>
+  <col/>
+  <col width="120"/>
+  <col width="150"/>
+  <col width="150"/>
+  <col width="120"/>
 <tr>
 <th>№</th>
 <th>Описание</th>
@@ -25,6 +26,16 @@
 <th>Категория</th>
 <th>Дата</th>
 </tr>
+</table>
+</div>
+<div style="overflow-y: scroll;">
+<table border="0" width="100%">
+  <col width="30"/>
+  <col/>
+  <col width="120"/>
+  <col width="150"/>
+  <col width="150"/>
+  <col width="120"/>
 <%
 	MasterDataContext context = (MasterDataContext)session.getAttribute("masterDataContext");
 
@@ -63,9 +74,9 @@
         	}
         }
         if (Priority.IMPOTANT_FAST.equals(task.getPriority())){
-        	tdStyle+="font-size:20px;font-weight:bold;";
+        	tdStyle+="font-size:20px;font-weight:bold;padding:5px;";
 	    } else {  
-	    	tdStyle+="font-size:15px;font-style:italic;";
+	    	tdStyle+="font-size:15px;font-style:italic;padding:5px;";
 	    }
         String comments = "";
         for(IComment comment : task.comments()){
@@ -73,18 +84,20 @@
         }
 %>
 <tr bgcolor="<%=color%>">
-<td style="<%=tdStyle%>"><%=++i%></td>
+<td style="<%=tdStyle%>" align="center"><%=++i%></td>
 <td style="<%=tdStyle%>"><%=task.getName()%>(<%=task.getId()%>)<br/><span style="font-size:12px;"><%=comments%></span></td>
-<td style="<%=tdStyle%>"><%=DateUtil.format(task.getPlanDate())%></td>
-<td style="<%=tdStyle%>"><%=task.getPriority()%></td>
-<td style="<%=tdStyle%>"><%=task.getCategory().getName()%></td>
+<td style="<%=tdStyle%>" align="center"><%=DateUtil.format(task.getPlanDate())%></td>
+<td style="<%=tdStyle%>" align="center"><%=task.getPriority()%></td>
+<td style="<%=tdStyle%>" align="center"><%=task.getCategory().getName()%></td>
 <%
 	if(new Date().getTime()>task.getPlanDate().getTime() && Status.OPEN.equals(task.getStatus()))
 		tdStyle+="background-color:#7e7e7e;";
 %>
-<td style="<%=tdStyle%>"><%=DateUtil.format(task.getCreateDate())%></td>
+<td style="<%=tdStyle%>" align="center"><%=DateUtil.format(task.getCreateDate())%></td>
 </tr>
 <%			
 	}
 %>
 </table>
+</div>
+</div>

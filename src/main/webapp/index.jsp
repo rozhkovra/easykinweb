@@ -7,7 +7,7 @@
 <html>
 <title>EasyKin, <%=DateUtil.formatWeek(new Date())%></title>
 <body>
-<h1>EasyKin</h1>
+<jsp:include page="header.jsp"/>
 <%
 	String username = request.getParameter("username")!=null?String.valueOf(request.getParameter("username")):"";
 	String password = request.getParameter("password")!=null?String.valueOf(request.getParameter("password")):"";

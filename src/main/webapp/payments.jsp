@@ -3,14 +3,7 @@
 <%@ page import="ru.rrozhkov.easykin.model.fin.payment.*"%>
 <%@ page import="java.util.*"%>
 <%@ page pageEncoding="UTF-8" contentType="text/html;charset=UTF-8"%>
-</br>
-<table border="0" width="100%">
-<tr>
-<td style="font-size:30px;font-weight:bold;text-align:left;">Платежи</td>
-<td style="font-size:30px;font-weight:bold;text-align:right;"><%=DateUtil.formatWeek(new Date())%></td>
-</tr>
-</table>
-<table border="1" width="100%">
+<table width="100%">
 <tr>
 <th>№</th>
 <th>Категория</th>
